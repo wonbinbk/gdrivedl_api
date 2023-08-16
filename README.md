@@ -12,7 +12,7 @@ You can download Google Drive files and folders from the command line using the 
 ## Requirement
 
 - [python](https://www.python.org/)
-- Python librarys
+- Then install these librarys
 
 ```text
 pip install google-auth-oauthlib google-auth google-auth-httplib2 google-api-python-client
