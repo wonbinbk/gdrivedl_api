@@ -1,2 +1,2 @@
-# gdrive-aria2
-Download Google Drive files and folders quickly and easily with aria2
+# gdrivedl
+You can download Google Drive files and folders from the command line using the Google Drive Downloader with aria2 (gdrivedl).
