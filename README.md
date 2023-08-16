@@ -9,6 +9,16 @@ You can download Google Drive files and folders from the command line using the 
 - Resuming partially downloaded files
 - Skipping Existing files
 
+## Installation
+
+First You need to install these python dependencies.
+```
+pip install google-auth-oauthlib
+pip install google-auth
+pip install google-auth-httplib2
+pip install google-api-python-client
+```
+
 ## Documentation
 
 ### Create Google OAuth client ID credentials
