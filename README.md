@@ -12,7 +12,7 @@ You can download Google Drive files and folders from the command line using the 
 ## Installation
 
 First You need to install these python dependencies.
-```
+```powershell
 pip install google-auth-oauthlib
 pip install google-auth
 pip install google-auth-httplib2
