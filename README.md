@@ -48,6 +48,9 @@ To authenticate as an end user and access user data in your app, you need to cre
 
 ## Configuration
 
+> [!NOTE]
+> Using your own account OAuth 2.0 Client is always preferable. You can also use rclone OAuth 2.0 Client, but it frequently returns the "Rate Limit Exceeded" error.
+
 - Set up OAuth 2.0 credentials.json to Access Google Drive APIs
 
 ```powershell
