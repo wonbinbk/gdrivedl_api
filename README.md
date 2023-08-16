@@ -21,13 +21,15 @@ pip install google-api-python-client
 
 ## Documentation
 
-### Create Google OAuth client ID credentials
+<details>
 
-#### Enable Google Drive API
+<summary>Create OAuth 2.0 Client IDs</summary>
+
+### Enable Google Drive API
 
 Before using Google APIs, you need to turn them on in a Google Cloud project. You can turn on one or more APIs in a single Google Cloud project.
 
-In the [Google Cloud console](https://console.cloud.google.com/flows/enableapi?apiid=drive.googleapis.com), enable the Google Drive API.
+In the [Google Cloud console](https://console.cloud.google.com/flows/enableapi?apiid=drive.googleapis.com), enable the Google Drive API. 
 
 #### Getting credentials for a desktop application
 
@@ -45,6 +47,8 @@ To authenticate as an end user and access user data in your app, you need to cre
 - [Google Workspace](https://developers.google.com/workspace/guides/get-started)
 - [glotlabs](https://github.com/glotlabs/gdrive/blob/main/docs/create_google_api_credentials.md)
 - [rclone](https://rclone.org/drive/#making-your-own-client-id)
+
+</details>
 
 ## Configuration
 
@@ -78,3 +82,8 @@ options:
   -h, --help           show this help message and exit
   --auth OAuth_client  Set up OAuth 2.0 credentials to Access Google Drive APIs
 ```
+
+## Credit
+
+- ChatGPT
+- [Aria2](https://aria2.github.io/)
