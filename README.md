@@ -13,7 +13,7 @@ You can download Google Drive files and folders from the command line using the 
 
 ### Create Google OAuth client ID credentials
 
-#### Enable the API
+#### Enable Google Drive API
 
 Before using Google APIs, you need to turn them on in a Google Cloud project. You can turn on one or more APIs in a single Google Cloud project.
 
