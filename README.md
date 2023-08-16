@@ -52,3 +52,16 @@ python gdrivedl.py "Link"
 
 ## Usage
 
+```
+❯ gdrivedl --help
+usage: gdrivedl.py [-h] [--auth OAuth_client] [link]
+
+Google Drive Downloader with aria2 integration.
+
+positional arguments:
+  link                 Google Drive Link
+
+options:
+  -h, --help           show this help message and exit
+  --auth OAuth_client  Set up OAuth 2.0 credentials to Access Google Drive APIs
+```
