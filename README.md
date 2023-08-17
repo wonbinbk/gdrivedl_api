@@ -27,34 +27,19 @@ pip install google-auth-oauthlib google-auth google-auth-httplib2 google-api-pyt
 > [!NOTE]
 > Using your own account OAuth 2.0 Client is always preferable. You can also use rclone OAuth 2.0 Client, but it frequently returns the "Rate Limit Exceeded" error.
 
-<details>
+### Create Your Own Account OAuth 2.0 Client IDs to access Google Drive API
 
-<summary>Create Your Own Account OAuth 2.0 Client IDs to access Google Drive API</summary>
+1. Create a [Google Cloud project](https://console.cloud.google.com/projectcreate)
+2. Enable [Google Drive API](https://console.cloud.google.com/flows/enableapi?apiid=drive.googleapis.com)
+3. Configure [OAuth consent](https://console.cloud.google.com/apis/credentials/consent) & Publish your app (to prevent the token from expiring after 7 days), **Make sure that you do not select any scopes** for your app. It allows you to publish your app instantly.
+4. Create access [credentials](https://console.cloud.google.com/apis/credentials) Create OAuth client ID credentials Click Create **Credentials > OAuth client ID**. Click **Application type > Desktop app**.
+5. Download your OAuth client ID credentials.
 
-### Enable Google Drive API
+### Detailed Guides
 
-Before using Google APIs, you need to turn them on in a Google Cloud project. You can turn on one or more APIs in a single Google Cloud project.
-
-In the [Google Cloud console](https://console.cloud.google.com/flows/enableapi?apiid=drive.googleapis.com), enable the Google Drive API. 
-
-#### Getting credentials for a desktop application
-
-To authenticate as an end user and access user data in your app, you need to create one or more OAuth 2.0 Client IDs. A client ID is used to identify a single app to Google's OAuth servers. If your app runs on multiple platforms, you must create a separate client ID for each platform.
-
-1. In the Google Cloud console, go to Menu ≡ > APIs & Services > [Credentials](https://console.cloud.google.com/apis/credentials).
-2. Click Create Credentials > OAuth client ID.
-3. Click Application type > Desktop app.
-4. In the Name field, type a name for the credential. This name is only shown in the Google Cloud console.
-5. Click Create. The OAuth client created screen appears, showing your new Client ID and Client secret.
-6. Click OK. and Use the download button to download your credentials.
-
-#### Detailed Guides
-
-- [Google Workspace](https://developers.google.com/workspace/guides/get-started)
+- [Google Workspace Guide](https://developers.google.com/workspace/guides/get-started)
 - [glotlabs](https://github.com/glotlabs/gdrive/blob/main/docs/create_google_api_credentials.md)
 - [rclone](https://rclone.org/drive/#making-your-own-client-id)
-
-</details>
 
 ### Usage
 
