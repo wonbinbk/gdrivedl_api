@@ -8,18 +8,20 @@ from google.oauth2.credentials import Credentials
 import pickle
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
+
 CYAN = '\033[96m'
 RESET = '\033[0m'
 
-default_download_path = r"C:\Users\White\Downloads\gdrive\dltest"
+# Default download location
+default_download_path = r"Directory"
 
 parser = argparse.ArgumentParser(description='Google Drive Downloader with aria2 integration.')
 parser.add_argument('--auth', metavar='OAuth_client', type=str, help='Set up OAuth 2.0 credentials to Access Google Drive APIs')
-parser.add_argument('link', nargs='?', help='Google Drive Link')
+parser.add_argument('link', nargs='?', type=str, help='Google Drive Link')
+parser.add_argument('--limit', metavar='Download_Limit', type=str, help='Set download speed limit')
 args = parser.parse_args()
 
 client_secret_file = args.auth
-link = args.link
 
 # Set up OAuth 2.0 credentials for Google Drive API
 creds = None
@@ -56,6 +58,8 @@ def download_file(file_id, file_name, file_size, dest_folder):
         '-o', os.path.basename(file_name),
         'https://www.googleapis.com/drive/v3/files/{}?alt=media'.format(file_id)
     ]
+    if args.limit:
+        cmd.insert(1, '--max-download-limit={}'.format(args.limit))
     subprocess.run(cmd)
 
 def get_total_files(folder_id):
@@ -92,12 +96,16 @@ def download_folder(folder_id, folder_path, total_files=0, current_file=0):
     return total_files, current_file
 
 if __name__ == '__main__':
-    if link:
+    if args.link:
         try:
-            if '/file/d/' in link:
-                file_id = link.split('/file/d/')[-1].split('/')[0]
+            if '/file/d/' in args.link:
+                file_id = args.link.split('/file/d/')[-1].split('/')[0]
+            elif 'open?id=' in args.link:
+                file_id = args.link.split('open?id=')[-1].split('&')[0]
+            elif 'uc?id=' in args.link:
+                file_id = args.link.split('uc?id=')[-1].split('&')[0]
             else:
-                file_id = link.split('/')[-1].split('?')[0].split('&')[0]
+                file_id = args.link.split('/')[-1].split('?')[0].split('&')[0]
             try:
                 file = service.files().get(fileId=file_id, supportsAllDrives=True).execute()
             except HttpError as error:
