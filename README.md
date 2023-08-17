@@ -22,9 +22,12 @@ pip install google-auth-oauthlib google-auth google-auth-httplib2 google-api-pyt
 
 ## Documentation
 
+> [!NOTE]
+> Using your own account OAuth 2.0 Client is always preferable. You can also use rclone OAuth 2.0 Client, but it frequently returns the "Rate Limit Exceeded" error.
+
 <details>
 
-<summary>Create OAuth 2.0 Client IDs</summary>
+<summary>Create Your Own Account OAuth 2.0 Client IDs to access Google Drive API</summary>
 
 ### Enable Google Drive API
 
@@ -51,28 +54,11 @@ To authenticate as an end user and access user data in your app, you need to cre
 
 </details>
 
-## Configuration
-
-> [!NOTE]
-> Using your own account OAuth 2.0 Client is always preferable. You can also use rclone OAuth 2.0 Client, but it frequently returns the "Rate Limit Exceeded" error.
-
-- Set up OAuth 2.0 credentials.json to Access Google Drive APIs
-
-```powershell
-python gdrivedl.py --auth "/PATH/credentials.json"
-```
-
-- To Download Folder/Files
-
-```powershell
-python gdrivedl.py "Link"
-```
-
-## Usage
+### Usage
 
 ```text
-❯ gdrivedl --help
-usage: gdrivedl.py [-h] [--auth OAuth_client] [link]
+gdrivedl -h
+usage: gdrivedl.py [-h] [--auth OAuth_client] [--limit Speed_Limit] [link]
 
 Google Drive Downloader with aria2 integration.
 
@@ -81,7 +67,28 @@ positional arguments:
 
 options:
   -h, --help           show this help message and exit
-  --auth OAuth_client  Set up OAuth 2.0 credentials to Access Google Drive APIs
+  --auth OAuth_client  Set up OAuth 2.0 client_secret to Access Google Drive APIs
+  --limit Speed_Limit  Set download speed limit (Example: 500K, 10M)
+```
+
+### Examples
+
+- Using OAuth 2.0 client_secrets credentials to access Google Drive API
+
+```powershell
+python gdrivedl.py --auth "path/client_secrets.json"
+```
+
+- To Download files or folders
+
+```powershell
+python gdrivedl.py "Link"
+```
+
+- Download files or folders with speed limit
+
+```powershell
+python gdrivedl.py "Link" --limit 10M
 ```
 
 ## Credit
