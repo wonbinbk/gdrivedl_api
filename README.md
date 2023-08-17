@@ -20,6 +20,8 @@ You can download Google Drive files and folders from the command line using the 
 pip install google-auth-oauthlib google-auth google-auth-httplib2 google-api-python-client
 ```
 
+- [aria2](https://aria2.github.io/)
+
 ## Documentation
 
 > [!NOTE]
