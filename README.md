@@ -35,13 +35,15 @@ pip install google-auth-oauthlib google-auth google-auth-httplib2 google-api-pyt
 4. Create access [credentials](https://console.cloud.google.com/apis/credentials) Create OAuth client ID credentials Click Create **Credentials > OAuth client ID**. Click **Application type > Desktop app**.
 5. Download your OAuth client ID credentials.
 
-### Detailed Guides
+#### Detailed Guides
 
 - [Google Workspace Guide](https://developers.google.com/workspace/guides/get-started)
 - [glotlabs](https://github.com/glotlabs/gdrive/blob/main/docs/create_google_api_credentials.md)
 - [rclone](https://rclone.org/drive/#making-your-own-client-id)
 
 ### Usage
+
+Make sure to change **Default download location** the in the gdrivedl.py file. https://github.com/dg0072/gdrivedl/blob/fdc7cf1963eef959467e161a72110c01720d857e/gdrivedl.py#L16 
 
 ```text
 gdrivedl -h
