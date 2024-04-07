@@ -12,13 +12,11 @@ from googleapiclient.errors import HttpError
 CYAN = '\033[96m'
 RESET = '\033[0m'
 
-# Default download location
-default_download_path = r"Directory"
-
 parser = argparse.ArgumentParser(description='Google Drive Downloader with aria2 integration.')
 parser.add_argument('--auth', metavar='OAuth_client', type=str, help='Set up OAuth 2.0 client_secret to Access Google Drive APIs')
-parser.add_argument('link', nargs='?', type=str, help='Google Drive Link')
 parser.add_argument('--limit', metavar='Speed_Limit', type=str, help='Set download speed limit (Example: 500K, 10M)')
+parser.add_argument('-P', '--path', metavar='Download_Path', default='Directory', type=str, help='Set download path')
+parser.add_argument('link', nargs='?', type=str, help='Google Drive Link')
 args = parser.parse_args()
 
 client_secret_file = args.auth
@@ -112,13 +110,13 @@ if __name__ == '__main__':
                 print('An error occurred: {}'.format(error))
                 sys.exit(1)
             if file['mimeType'] == 'application/vnd.google-apps.folder':
-                folder_path = os.path.join(default_download_path, file['name'])
+                folder_path = os.path.join(args.path, file['name'])
                 print('Downloading Folder {}{}{}'.format(CYAN, file['name'], RESET))
                 total_files = get_total_files(file['id'])
                 download_folder(file['id'], folder_path, total_files=total_files)
             else:
-                file_name = os.path.join(default_download_path, file['name'])
+                file_name = os.path.join(args.path, file['name'])
                 print('\nFound [{}{}{}]'.format(CYAN, os.path.basename(file_name), RESET))
-                download_file(file['id'], file_name, int(file.get('size', 0)), default_download_path)
+                download_file(file['id'], file_name, int(file.get('size', 0)), args.path)
         except KeyboardInterrupt:
             print('\nCancelled')
